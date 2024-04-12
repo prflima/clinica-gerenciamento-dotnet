@@ -1,6 +1,15 @@
+using FSP.PacienteAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Add context
+builder.Services.AddDbContext<PostgreeSQLContext>(opt =>
+{
+    opt.UseNpgsql(builder.Configuration["ConnectionStrings:PostGreConnection"]);
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

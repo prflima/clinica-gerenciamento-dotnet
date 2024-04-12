@@ -10,5 +10,7 @@ namespace FSP.PacienteAPI.Models
         public int CEP { get; set; }
         public string Cidade { get; set; }
         public TipoEndereco TipoEndereco { get; set; }
+        public Guid PacienteId { get; set; }
+        public Paciente Paciente { get; set; }
     }
 }
