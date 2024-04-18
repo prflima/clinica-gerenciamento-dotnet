@@ -1,6 +1,6 @@
 ﻿namespace FSP.PacienteAPI.Repositories.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         Task CompleteAsync();
     }
