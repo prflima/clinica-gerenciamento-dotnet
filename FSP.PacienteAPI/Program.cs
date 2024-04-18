@@ -1,15 +1,20 @@
 using FSP.PacienteAPI.Data;
+using FSP.PacienteAPI.Repositories;
+using FSP.PacienteAPI.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 // Add context
 builder.Services.AddDbContext<PostgreeSQLContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration["ConnectionStrings:PostGreConnection"]);
 });
+
+// Configure dependency injection
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
